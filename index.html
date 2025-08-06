@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huda Zainab - Marketing Professional Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+            border-radius: 4px;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0f0f23, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            z-index: -2;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(139, 92, 246, 0.6);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0; 
+            }
+            50% { 
+                transform: translateY(-100px) rotate(180deg); 
+                opacity: 1; 
+            }
+        }
+        
+        /* Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        
+        /* 3D Card Effects */
+        .card-3d {
+            background: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-3d:hover {
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 35px 60px -12px rgba(139, 92, 246, 0.3);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        /* Animated Border */
+        .animated-border {
+            position: relative;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6, #06b6d4, #8b5cf6);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .animated-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6, #06b6d4, #8b5cf6);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        
+        /* Glow Effects */
+        .glow {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        /* Section Backgrounds */
+        .section-bg {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9));
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Animated Icons */
+        .icon-3d {
+            transition: all 0.3s ease;
+        }
+        
+        .icon-3d:hover {
+            transform: translateY(-5px) scale(1.1);
+            filter: drop-shadow(0 10px 20px rgba(139, 92, 246, 0.5));
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .particle {
+                width: 1px;
+                height: 1px;
+            }
+            
+            .card-3d:hover {
+                transform: translateY(-4px);
+            }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stagger Animation */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="container mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl md:text-3xl font-bold gradient-text">
+                    Huda Zainab
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#about" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">Skills</a>
+                    <a href="#projects" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">Projects</a>
+                    <a href="#contact" class="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <div class="fade-in">
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-6">
+                    Hello, I'm <span class="gradient-text">Huda Zainab</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    A passionate marketing professional blending creativity with analytics to drive impactful campaigns
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#skills" class="glow bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105">
+                        View My Skills
+                    </a>
+                    <a href="#contact" class="glow bg-transparent border-2 border-purple-400 text-purple-400 font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:bg-purple-400 hover:text-white">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 section-bg">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text fade-in">
+                    About Me
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in stagger-1">
+                        <div class="animated-border">
+                            <img src="huda.jpg" alt="Huda Zainab" class="w-full h-96 object-cover rounded-16">
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in stagger-2">
+                        <div class="card-3d p-8">
+                            <h3 class="text-2xl md:text-3xl font-bold mb-6 text-purple-400">
+                                Marketing Professional & Biotech Student
+                            </h3>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                I'm a passionate marketing professional with a knack for creating data-driven ad campaigns that drive real business results. With experience in digital marketing, SEO, and social media strategy, I specialize in crafting strategies that resonate with target audiences and deliver measurable growth.
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                As a biotech student with a passion for marketing, I leverage my scientific background to craft compelling, data-driven campaigns that drive results. By combining my knowledge of complex products with creative marketing strategies, I deliver messaging that not only grabs attention but also converts and engages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 md:py-32">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text fade-in">
+                    My Skills
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Marketing Skills -->
+                    <div class="card-3d p-6 text-center fade-in stagger-1">
+                        <i class="fas fa-bullhorn text-4xl text-purple-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Digital Marketing</h3>
+                        <p class="text-gray-400">Comprehensive digital marketing strategies and campaign management</p>
+                    </div>
+                    
+                    <div class="card-3d p-6 text-center fade-in stagger-2">
+                        <i class="fas fa-pencil-alt text-4xl text-purple-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Content Strategy</h3>
+                        <p class="text-gray-400">Creating compelling content that engages and converts audiences</p>
+                    </div>
+                    
+                    <div class="card-3d p-6 text-center fade-in stagger-3">
+                        <i class="fas fa-search text-4xl text-purple-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Market Research</h3>
+                        <p class="text-gray-400">In-depth market analysis and competitive intelligence</p>
+                    </div>
+                    
+                    <div class="card-3d p-6 text-center fade-in stagger-4">
+                        <i class="fas fa-chart-line text-4xl text-purple-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Data Analytics</h3>
+                        <p class="text-gray-400">Data-driven decision making and performance optimization</p>
+                    </div>
+                    
+                    <!-- Biotech Skills -->
+                    <div class="card-3d p-6 text-center fade-in stagger-1">
+                        <i class="fas fa-flask text-4xl text-blue-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Biotech Knowledge</h3>
+                        <p class="text-gray-400">Deep understanding of biotechnology industry and products</p>
+                    </div>
+                    
+                    <div class="card-3d p-6 text-center fade-in stagger-2">
+                        <i class="fas fa-database text-4xl text-blue-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Data Analysis</h3>
+                        <p class="text-gray-400">Statistical analysis and scientific data interpretation</p>
+                    </div>
+                    
+                    <div class="card-3d p-6 text-center fade-in stagger-3">
+                        <i class="fas fa-signal text-4xl text-blue-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Biostatistics</h3>
+                        <p class="text-gray-400">Advanced statistical methods for research and analysis</p>
+                    </div>
+                    
+                    <div class="card-3d p-6 text-center fade-in stagger-4">
+                        <i class="fas fa-code text-4xl text-blue-400 mb-4 icon-3d"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Bioinformatics</h3>
+                        <p class="text-gray-400">Computational analysis of biological data</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 md:py-32 section-bg">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text fade-in">
+                    Featured Campaigns
+                </h2>
+                
+                <div class="fade-in stagger-1">
+                    <div class="card-3d p-8 md:p-12">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-3xl md:text-4xl font-bold text-purple-400 mb-4">
+                                    Luna Glow Beauty
+                                </h3>
+                                <h4 class="text-xl text-blue-400 mb-6">Google Search Campaigns</h4>
+                                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                    A high-impact digital marketing campaign that skyrocketed website traffic and sales for Luna Glow Beauty. Managed all aspects of the Google Ads Search Campaign, from keyword research to ad copywriting, resulting in a 40% month-over-month traffic increase and a 2.5x ROAS.
+                                </p>
+                                <div class="flex flex-wrap gap-4 mb-6">
+                                    <span class="bg-purple-600 px-4 py-2 rounded-full text-sm font-medium">Google Ads</span>
+                                    <span class="bg-blue-600 px-4 py-2 rounded-full text-sm font-medium">SEO</span>
+                                    <span class="bg-green-600 px-4 py-2 rounded-full text-sm font-medium">Analytics</span>
+                                </div>
+                                <a href="https://docs.google.com/document/d/1ROS-LhNluTW-2gnwDWdpbmjlotxbArNFIU1rY-jdCxE/edit?usp=sharing" 
+                                   target="_blank"
+                                   class="glow bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-3 px-8 rounded-full inline-block transition-all duration-300 hover:scale-105">
+                                    View Full Campaign Details
+                                </a>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-8 rounded-16">
+                                    <i class="fas fa-chart-line text-6xl text-white mb-4"></i>
+                                    <h4 class="text-2xl font-bold text-white mb-2">40% Traffic Increase</h4>
+                                    <p class="text-purple-200">Month-over-month growth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text fade-in">
+                    Let's Connect
+                </h2>
+                <p class="text-xl text-gray-300 mb-12 fade-in stagger-1">
+                    I'm always open to new opportunities and collaborations. Feel free to reach out!
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <a href="mailto:ppclegends10@gmail.com" 
+                       class="card-3d p-6 text-center fade-in stagger-2 glow hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-envelope text-3xl text-purple-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Email</h3>
+                        <p class="text-gray-400">ppclegends10@gmail.com</p>
+                    </a>
+                    
+                    <a href="http://www.linkedin.com/in/huda-zainab-170766376" 
+                       target="_blank"
+                       class="card-3d p-6 text-center fade-in stagger-3 glow hover:scale-105 transition-all duration-300">
+                        <i class="fab fa-linkedin text-3xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">LinkedIn</h3>
+                        <p class="text-gray-400">Connect professionally</p>
+                    </a>
+                    
+                    <a href="https://www.fiverr.com/huda_zainab10/buying?source=avatar_menu_profile" 
+                       target="_blank"
+                       class="card-3d p-6 text-center fade-in stagger-4 glow hover:scale-105 transition-all duration-300">
+                        <i class="fab fa-fiverr text-3xl text-green-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Fiverr</h3>
+                        <p class="text-gray-400">View my services</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 glass">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <p class="text-gray-400">&copy; 2024 Huda Zainab. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 30 : 60;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                `;
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                `;
+            }
+        }
+        
+        // Smooth scrolling for navigation links
+        function smoothScroll(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Mobile menu event listener
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+            
+            // Smooth scrolling for all navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', smoothScroll);
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const mobileMenu = document.getElementById('mobile-menu');
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                
+                if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                }
+            });
+            
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all fade-in elements
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html> 
