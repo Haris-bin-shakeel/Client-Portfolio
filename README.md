@@ -65,7 +65,7 @@ Client-Portfolio/
 
 ## 🌐 Live Demo
 
-Visit the live portfolio: [Your Netlify URL]
+Visit the live portfolio: https://huda-zainab-portfolio.netlify.app/
 
 ## 📧 Contact
 
